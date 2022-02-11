@@ -1,10 +1,10 @@
 import { MainContainer } from "./styles";
-import Input from "../../Components/Input";
+import Header from "../../Components/Header";
 
 const Home = () => {
   return (
     <MainContainer>
-      <Input />
+      <Header />
     </MainContainer>
   )
 }

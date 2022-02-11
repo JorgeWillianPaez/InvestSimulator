@@ -9,5 +9,9 @@ export const InputContainer = styled.input`
   padding: 8px;
   font-weight: medium;
   font-size: 18px;
+  :focus {
+    border-bottom: 2px solid var(--salmon);
+    transition: 0.5s;
+  }
 
 `;
