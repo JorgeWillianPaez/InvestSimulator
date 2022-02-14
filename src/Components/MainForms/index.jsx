@@ -2,8 +2,22 @@ import { Container, FormHeader, Forms, IncomeFormButtons, SectionTitle, Indexing
 import Input from "../Input";
 import ExclamationIcon from "../../assets/exclamation.png";
 import { useSimulator } from "../../Providers/SimulatorProvider/";
+import { useState } from "react";
 
 const MainForms = () => {
+
+  const [initialContribution, setInitialContribution] = useState();
+  const [deadline, setDeadline] = useState("");
+  const [finalContribution, setFinalContribution] = useState();
+  const [profitability, setProfitability] = useState("");
+
+  const clearForm = (e) => {
+    e.preventDefault();
+    setInitialContribution(0);
+    setDeadline("");
+    setFinalContribution(0);
+    setProfitability("");
+  };
 
   const {
     income,
@@ -17,7 +31,7 @@ const MainForms = () => {
 
   const simulateFunction = (e) => {
     e.preventDefault();
-    simulate(income, indexing);
+    simulate("bruto", "pre");
   }
 
   return (
@@ -29,8 +43,8 @@ const MainForms = () => {
             <p>Rendimento</p>
             <img src={ExclamationIcon} alt="Info" />
           </SectionTitle>
-          <button className="btn__grossSalary" onClick={() => changeIncome("bruto")} >Bruto</button>
-          <button className="btn__liquidSalary" onClick={() => changeIncome("líquido")} >Líquido</button>
+          <button className="btn__grossSalary" income onClick={() => changeIncome("bruto")} >Bruto</button>
+          <button className="btn__liquidSalary" income onClick={() => changeIncome("liquido")} >Líquido</button>
         </IncomeFormButtons>
         <IndexingFormButtons>
           <SectionTitle>
@@ -45,20 +59,20 @@ const MainForms = () => {
       <FormContainer>
         <Forms>
           <IncomeForm>
-            <Input label="Aporte Inicial" />
-            <Input label="Prazo (em meses)" />
+            <Input label="Aporte Inicial" value={initialContribution} onChange={(e) => setInitialContribution(e.target.value)} />
+            <Input label="Prazo (em meses)" value={deadline} onChange={(e) => setDeadline(e.target.value)} />
             <Input label="ICPA (ao ano)" value={icpa} />
           </IncomeForm>
           <IndexingForm>
             <IncomeForm>
-              <Input label="Aporte Mensal" />
-              <Input label="Rentabilidade" />
+              <Input label="Aporte Mensal" value={finalContribution} onChange={(e) => setFinalContribution(e.target.value)} />
+              <Input label="Rentabilidade" value={profitability} onChange={(e) => setProfitability(e.target.value)} />
               <Input label="CDI (ano ano)" value={cdi} />
             </IncomeForm>
           </IndexingForm>
         </Forms>
         <ClearSubmitBtn>
-          <button className="btn__clear" >Limpar campos</button>
+          <button className="btn__clear" onClick={clearForm}>Limpar campos</button>
           <button className="btn__submit" onClick={simulateFunction}>Simular</button>
         </ClearSubmitBtn>
       </FormContainer>

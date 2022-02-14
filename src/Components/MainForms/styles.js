@@ -34,7 +34,7 @@ export const FormHeader = styled.div`
 
   display: flex;
   justify-content: space-around;
-  width: 38%;
+  width: 100%;
 
   p {
     font-size: 12px;
@@ -51,7 +51,8 @@ export const Forms = styled.div`
 
 export const IncomeFormButtons = styled.div`
 
-  width: 40%;
+  margin-left: 18px;
+  width: 204px;
 
   button {
     width: 50%;
@@ -61,10 +62,12 @@ export const IncomeFormButtons = styled.div`
   }
 
   .btn__grossSalary {
+    background-color: ${props => props.income === "bruto" ? "#F29057" : "transparent"};
     border-radius: 8px 0 0 8px;
   }
 
   .btn__liquidSalary {
+    background-color: ${props => props.income === "líquido" ? "#F29057" : "transparent"};
     border-radius: 0 8px 8px 0;
   }
 
@@ -85,7 +88,8 @@ export const SectionTitle = styled.div`
 
 export const IndexingFormButtons = styled.div`
 
-  width: 40%;
+  margin-left: 20px;
+  width: 220px;
 
   button {
     width: 33.3%;
