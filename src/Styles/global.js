@@ -9,5 +9,25 @@ export default createGlobalStyle`
     outline: 0;
   }
 
+  body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+  }
+
+  :root {
+    --gray: #8C8C8C;
+    --lightGray: #EFEFEF;
+    --salmon: #F29057;
+    --black: ##000000;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+
 `
 
