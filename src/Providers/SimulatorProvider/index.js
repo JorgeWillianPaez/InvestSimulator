@@ -5,10 +5,12 @@ const simulatorContext = createContext();
 
 export const SimulatorProvider = ({ children }) => {
 
-  const [income, setIncome] = useState(null);
-  const [indexing, setIndexing] = useState(null);
-  const [cdi, setCdi] = useState(null);
-  const [icpa, setIcpa] = useState(null);
+  const [income, setIncome] = useState("");
+  const [indexing, setIndexing] = useState("");
+  const [cdi, setCdi] = useState(0);
+  const [icpa, setIcpa] = useState(0);
+  const [results, setResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
 
 
   useEffect(() => {
@@ -22,13 +24,14 @@ export const SimulatorProvider = ({ children }) => {
   const changeIncome = (type) => {
     if (type === "bruto") {
       setIncome("bruto");
-    } else if (type === "líquido") {
+    } else if (type === "liquido") {
       setIncome("liquido");
     };
+    console.log(income);
   };
 
   const changeIndexing = (type) => {
-    if (type === "pré") {
+    if (type === "pre") {
       setIndexing("pre");
     } else if (type === "pos") {
       setIndexing("pro");
@@ -37,11 +40,11 @@ export const SimulatorProvider = ({ children }) => {
     };
   };
 
-  const simulate = (incomeType, indexingType, e) => {
-    e.preventDefault();
+  const simulate = (incomeType, indexingType) => {
     api.get(`/simulacoes?tipoIndexacao=${indexingType}&tipoRendimento=${incomeType}`)
       .then((res) => {
-        console.log(res.data);
+        setResults(res.data[0]);
+        setShowResults(true);
       })
   }
 
@@ -53,7 +56,9 @@ export const SimulatorProvider = ({ children }) => {
       changeIndexing,
       cdi,
       icpa,
-      simulate
+      simulate,
+      results,
+      showResults
     }}>
       {children}
     </simulatorContext.Provider>
