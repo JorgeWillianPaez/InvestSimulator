@@ -124,7 +124,7 @@ export const ClearSubmitBtn = styled.div`
   }
 
   button ~ .btn__submit {
-    background-color: var(--salmon);
+    background-color: ${props => props.submitColor ? "salmon" : "gray"};
     border: none;
   }
 
