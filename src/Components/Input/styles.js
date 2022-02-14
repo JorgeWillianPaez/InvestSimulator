@@ -1,17 +1,34 @@
 import styled from "styled-components";
 
-export const InputContainer = styled.input`
+export const InputContainer = styled.div`
 
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: 2px solid black;
-  padding: 8px;
-  font-weight: medium;
-  font-size: 18px;
-  :focus {
-    border-bottom: 2px solid var(--salmon);
-    transition: 0.5s;
+  display: flex;
+  width: 100%;
+  position: relative;
+
+  label {
+    position: absolute;
+    top: -6px;
+    display: block;
+    transition: 0.2s;
+    margin-left: 16px;
+    cursor: text;
+    font-size: 12px;
+  }
+
+  input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid black;
+    padding-bottom: 6px;
+    font-weight: medium;
+    font-size: 16px;
+    width: 200px;
+    margin: 26px 16px;
+    transition: 0.4s;
+    :focus {
+      border-bottom: 2px solid var(--salmon);
+    }
   }
 
 `;
