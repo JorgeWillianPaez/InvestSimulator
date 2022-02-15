@@ -6,7 +6,8 @@ const simulatorContext = createContext();
 export const SimulatorProvider = ({ children }) => {
 
   /*
-    
+    Declarando e inicializando estados que são
+    utilizados nas funções e renderizações.
   */
   const [income, setIncome] = useState("");
   const [indexing, setIndexing] = useState("");
@@ -27,6 +28,10 @@ export const SimulatorProvider = ({ children }) => {
       })
   })
 
+  /*
+    Função que altera o valor do estado
+    "income" para "bruto" ou "liquido".
+  */
   const changeIncome = (type) => {
     if (type === "bruto") {
       setIncome("bruto");
@@ -35,6 +40,10 @@ export const SimulatorProvider = ({ children }) => {
     };
   };
 
+  /*
+    Função que altera o valor do estado
+    "indexing" para "pre", "pos" ou "fixado".
+  */
   const changeIndexing = (type) => {
     if (type === "pre") {
       setIndexing("pre");
@@ -77,4 +86,9 @@ export const SimulatorProvider = ({ children }) => {
 
 };
 
+/*
+  Exportando função que será utilizada para
+  desestruturar todas as funções e estados
+  declarados no SimulatorProvider.
+*/
 export const useSimulator = () => useContext(simulatorContext);

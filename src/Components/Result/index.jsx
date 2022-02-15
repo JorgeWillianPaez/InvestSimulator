@@ -4,6 +4,10 @@ import { formatCurrency } from "../../utils/formatValue";
 
 const Result = () => {
 
+  /*
+    Desestruturando resultados para serem
+    renderizados na página.
+  */
   const { results } = useSimulator();
 
   return (

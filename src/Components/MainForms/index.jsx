@@ -10,12 +10,20 @@ import { formatPercent } from "../../utils/formatValue";
 
 const MainForms = () => {
 
+  /*
+    Estados criados para inicializar
+    valores padrões para os inputs.
+  */
   const [initialContribution, setInitialContribution] = useState();
   const [deadline, setDeadline] = useState();
   const [finalContribution, setFinalContribution] = useState();
   const [profitability, setProfitability] = useState();
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
+  /*
+    Objeto yup para validação de cada campo do
+    formulário.
+  */
   const schema = yup.object().shape({
     initialContribution: yup.number("Campo deve ser um número").required("Campo obrigatório"),
     deadline: yup.number("Campo deve ser um número").required("Campo obrigatório"),
@@ -25,20 +33,35 @@ const MainForms = () => {
     cdi: yup.string()
   });
 
+  /*
+    Desestruturando funções do react-hook-form,
+    que facilitam a utilização do formulário
+    e validação de erros.
+  */
   const { register, handleSubmit, reset, formState: { errors }, } = useForm({ resolver: yupResolver(schema) });
 
+  /*
+    Função utilizada para limpar formulário.
+  */
   const clearForm = (e) => {
     e.preventDefault();
     setShowResults();
     reset();
   };
 
+  /*
+    useEffect para verificar se os campos do
+    formulário estão preenchidos.
+  */
   useEffect(() => {
     if (initialContribution != null & deadline != null & finalContribution != null & profitability != null) {
       setSubmitDisabled(false);
     }
   }, [deadline, profitability, initialContribution, finalContribution])
 
+  /*
+    Desestruturando funções e estados do SimulatorProvider.
+  */
   const {
     income,
     indexing,
@@ -50,6 +73,10 @@ const MainForms = () => {
     setShowResults
   } = useSimulator();
 
+  /*
+    Função que será executada pela botão "simular"
+    do formulário.
+  */
   const onSubmitFunction = (data) => {
     simulate(income, indexing);
   };

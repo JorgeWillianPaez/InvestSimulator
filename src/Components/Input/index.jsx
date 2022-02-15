@@ -1,5 +1,10 @@
 import { InputContainer } from "./styles";
 
+/*
+  Componente input para ser reutilizado
+  em outros componentes da aplicação.
+*/
+
 const Input = ({ placeholder, name, label, value, register, error, ...rest }) => {
   return (
     <InputContainer>
