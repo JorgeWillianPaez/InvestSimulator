@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
 
@@ -59,15 +59,14 @@ export const IncomeFormButtons = styled.div`
     height: 50px;
     font-size: 12px;
     border: 1px solid black;
+    background-color: transparent;
   }
 
   .btn__grossSalary {
-    background-color: ${props => props.income === "bruto" ? "#F29057" : "transparent"};
     border-radius: 8px 0 0 8px;
   }
 
   .btn__liquidSalary {
-    background-color: ${props => props.income === "líquido" ? "#F29057" : "transparent"};
     border-radius: 0 8px 8px 0;
   }
 
@@ -127,9 +126,11 @@ export const ClearSubmitBtn = styled.div`
     font-size: 16px;
   }
 
-  button ~ .btn__submit {
-    background-color: ${props => props.submitColor ? "salmon" : "gray"};
-    border: none;
-  }
+  ${({ disabled }) => disabled && css`
+    button ~ .btn__submit {
+      background-color: var(--gray);
+      border: none;
+    }
+  `}
 
 `;

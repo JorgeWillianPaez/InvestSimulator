@@ -5,6 +5,9 @@ const simulatorContext = createContext();
 
 export const SimulatorProvider = ({ children }) => {
 
+  /*
+    
+  */
   const [income, setIncome] = useState("");
   const [indexing, setIndexing] = useState("");
   const [cdi, setCdi] = useState(0);
@@ -12,7 +15,10 @@ export const SimulatorProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
 
-
+  /*
+    useEffect utilizado para inserir valores iniciais
+    para CDI e ICPA na aplicação.
+  */
   useEffect(() => {
     api.get("/indicadores")
       .then((res) => {
@@ -27,19 +33,23 @@ export const SimulatorProvider = ({ children }) => {
     } else if (type === "liquido") {
       setIncome("liquido");
     };
-    console.log(income);
   };
 
   const changeIndexing = (type) => {
     if (type === "pre") {
       setIndexing("pre");
     } else if (type === "pos") {
-      setIndexing("pro");
+      setIndexing("pos");
     } else {
       setIndexing("fixado");
     };
   };
 
+  /*
+    Função principal que faz a requisição na api fake,
+    pegando todos os dados e filtrando através dos
+    query params.
+  */
   const simulate = (incomeType, indexingType) => {
     api.get(`/simulacoes?tipoIndexacao=${indexingType}&tipoRendimento=${incomeType}`)
       .then((res) => {
@@ -58,7 +68,8 @@ export const SimulatorProvider = ({ children }) => {
       icpa,
       simulate,
       results,
-      showResults
+      showResults,
+      setShowResults
     }}>
       {children}
     </simulatorContext.Provider>

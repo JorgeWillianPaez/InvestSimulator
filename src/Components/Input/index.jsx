@@ -1,10 +1,11 @@
 import { InputContainer } from "./styles";
 
-const Input = ({ placeholder, type, name, label, value, ...rest }) => {
+const Input = ({ placeholder, name, label, value, register, error, ...rest }) => {
   return (
     <InputContainer>
-      <input placeholder={placeholder} id={name} value={value} name={name} {...rest} />
+      <input {...register(name)} placeholder={placeholder} id={name} value={value} {...rest} />
       <label for="name">{label}</label>
+      <div>{error}</div>
     </InputContainer>
   )
 }

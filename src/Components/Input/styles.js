@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const InputContainer = styled.div`
 
   display: flex;
+  flex-direction: column;
   width: 100%;
   position: relative;
 
@@ -29,6 +30,18 @@ export const InputContainer = styled.div`
     :focus {
       border-bottom: 2px solid var(--salmon);
     }
+  }
+
+  @media (max-width: 320px) {
+    input {
+      width: 100px;
+    }
+  }
+
+  div {
+    position: absolute;
+    color: red;
+    font-size: 12px;
   }
 
 `;
