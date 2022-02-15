@@ -5,6 +5,10 @@ import closeIcon from "../../assets/closeIcon.png";
 import homeIcon from "../../assets/homeIcon.png";
 import searchIcon from "../../assets/searchIcon.png";
 
+/*
+  Componente header utilizado na
+  aplicação desktop.
+*/
 
 const Header = () => {
   return (

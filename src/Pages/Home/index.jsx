@@ -6,6 +6,11 @@ import { useSimulator } from "../../Providers/SimulatorProvider";
 
 const Home = () => {
 
+  /*
+    Desestruturando função showResults do
+    SimulatorProvider, para permitir a
+    visibilidade dos resultados da simulação.
+  */
   const { showResults } = useSimulator();
 
   return (
