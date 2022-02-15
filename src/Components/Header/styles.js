@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
 
+  @media (max-width: 767px) {
+    display: none;
+  }
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,6 +37,16 @@ export const NavIcons = styled.div`
   
   img {
     width: 24px;
+  }
+
+`;
+
+export const Arrows = styled.div`
+
+  display: flex;
+
+  img {
+    margin-left: 18px;
   }
 
 `;

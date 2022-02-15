@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
+
+  width: 100%;
+
 `;
 
 export const FormAndResult = styled.div`
 
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 
 `;
 
