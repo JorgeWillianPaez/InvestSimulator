@@ -6,14 +6,23 @@ export const Container = styled.div`
   flex-direction: column;
 
   h2 {
-    margin: 10px 0 10px 23px;
+    display: none;
   }
+  
+  @media (min-width: 1024px) {
+    h2 {
+      display: block;
+      margin: 10px 0 10px 23px;
+    }
+  }
+
 `;
 
 export const FormContainer = styled.form`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 40px;
 
 `;
@@ -34,7 +43,8 @@ export const FormHeader = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 
   p {
@@ -42,8 +52,12 @@ export const FormHeader = styled.div`
     margin-bottom: 14px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
     flex-direction: row;
+  }
+
+  @media (min-width: 1024px) {
+    justify-content: space-around;
   }
 
 `;
@@ -53,7 +67,7 @@ export const Forms = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
     flex-direction: row;
   }
 
@@ -62,6 +76,7 @@ export const Forms = styled.div`
 export const IncomeFormButtons = styled.div`
 
   margin-left: 18px;
+  margin-bottom: 20px;
   width: 204px;
 
   button {
@@ -80,6 +95,10 @@ export const IncomeFormButtons = styled.div`
   .btn__liquidSalary {
     background-color: ${({ income }) => income === "liquido" ? "var(--salmon)" : "transparent"};
     border-radius: 0 8px 8px 0;
+  }
+
+  @media (min-width: 480px) {
+    margin-bottom: 0;
   }
 
 `;
@@ -131,9 +150,9 @@ export const ClearSubmitBtn = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 450px;
-  margin-left: 24px;
+  align-items: center;
+  width: 100%;
+  margin-left: 10px;
 
   button {
     background-color: transparent;
@@ -155,10 +174,13 @@ export const ClearSubmitBtn = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
+    width: 450px;
+    justify-content: space-between;
     flex-direction: row;
 
     button {
+      width: 46%;
       margin: 0;
     }
   }

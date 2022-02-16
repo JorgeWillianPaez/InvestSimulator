@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
 
-  @media (max-width: 767px) {
-    display: none;
-  }
+  display: none;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 80px;
-  background-color: var(--lightGray);
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: var(--lightGray);
 
-  p {
-    margin-top: 4px;
-    margin-bottom: 4px;
+    p {
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
   }
 
 `;
