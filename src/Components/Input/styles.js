@@ -39,6 +39,5 @@ export const InputContainer = styled.div`
     color: red;
     font-size: 12px;
   }
-
   
 `;
