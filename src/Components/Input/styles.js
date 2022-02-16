@@ -32,16 +32,13 @@ export const InputContainer = styled.div`
     }
   }
 
-  @media (max-width: 320px) {
-    input {
-      width: 100px;
-    }
-  }
-
   div {
     position: absolute;
+    top: 55px;
+    left: 16px;
     color: red;
     font-size: 12px;
   }
 
+  
 `;

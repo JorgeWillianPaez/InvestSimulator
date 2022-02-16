@@ -24,11 +24,11 @@ const MainForms = () => {
     formulário.
   */
   const schema = yup.object().shape({
-    initialContribution: yup.number("Aporte deve ser um número"),
-    deadline: yup.number("Prazo deve ser um número"),
+    initialContribution: yup.string().matches(/^[0-9\b]+$/, "Aporte deve ser um número"),
+    deadline: yup.string().matches(/^[0-9\b]+$/, "Prazo deve ser um número"),
     ipca: yup.string(),
-    finalContribution: yup.number("Aporte deve ser um número"),
-    profitability: yup.number("Rentabilidade deve ser um número"),
+    finalContribution: yup.string().matches(/^[0-9\b]+$/, "Aporte deve ser um número"),
+    profitability: yup.string().matches(/^[0-9\b]+$/, "Rentabilidade deve ser um número"),
     cdi: yup.string()
   });
 
@@ -50,8 +50,7 @@ const MainForms = () => {
     cdi,
     icpa,
     simulate,
-    setShowResults,
-    grossLiquidButton,
+    setShowResults
   } = useSimulator();
 
   /*
@@ -70,6 +69,7 @@ const MainForms = () => {
   const clearForm = (e) => {
     e.preventDefault();
     setShowResults();
+    changeIncome("");
     reset();
   };
 

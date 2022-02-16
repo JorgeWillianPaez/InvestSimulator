@@ -10,7 +10,7 @@ const Input = ({ placeholder, name, label, value, register, error = "", ...rest 
     <InputContainer>
       <input {...register(name)} placeholder={placeholder} id={name} value={value} {...rest} />
       <label for="name">{label}</label>
-      <div>{error}</div>
+      <div>{!!error && error}</div>
     </InputContainer>
   )
 }
