@@ -33,6 +33,7 @@ export const IncomeForm = styled.div`
 export const FormHeader = styled.div`
 
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   width: 100%;
 
@@ -41,11 +42,20 @@ export const FormHeader = styled.div`
     margin-bottom: 14px;
   }
 
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
 `;
 
 export const Forms = styled.div`
 
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 
 `;
 
@@ -120,6 +130,7 @@ export const IndexingForm = styled.div``;
 export const ClearSubmitBtn = styled.div`
 
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 450px;
   margin-left: 24px;
@@ -132,6 +143,7 @@ export const ClearSubmitBtn = styled.div`
     height: 48px;
     font-weight: bold;
     font-size: 16px;
+    margin-top: 10px;
   }
 
   button ~ .btn__submit {
@@ -140,6 +152,14 @@ export const ClearSubmitBtn = styled.div`
     transition: 0.2s;
     :disabled {
       background-color: var(--gray);
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+
+    button {
+      margin: 0;
     }
   }
 

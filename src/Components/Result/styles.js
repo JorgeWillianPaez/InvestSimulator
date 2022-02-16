@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Results = styled.div`
 
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 700px;
   justify-content: space-between;
@@ -27,6 +28,10 @@ export const Results = styled.div`
     background-color: #F9F9F9;
     margin: 10px;
     box-shadow: 0px 1px 5px 5px rgba(0,0,0,0.2);
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
 
 `;

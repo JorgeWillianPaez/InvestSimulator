@@ -16,7 +16,6 @@ export const SimulatorProvider = ({ children }) => {
   const [icpa, setIcpa] = useState(0);
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const [grossLiquidButton, setGrossLiquidButton] = useState(null);
 
   /*
     useEffect utilizado para inserir valores iniciais
@@ -36,12 +35,10 @@ export const SimulatorProvider = ({ children }) => {
   */
   const changeIncome = (type) => {
     if (type === "bruto") {
-      setGrossLiquidButton(true);
       setIncome("bruto");
     } else if (type === "liquido") {
-      setGrossLiquidButton(false);
       setIncome("liquido");
-    };
+    }
   };
 
   /*
@@ -88,8 +85,7 @@ export const SimulatorProvider = ({ children }) => {
       simulate,
       results,
       showResults,
-      setShowResults,
-      grossLiquidButton
+      setShowResults
     }}>
       {children}
     </simulatorContext.Provider>
