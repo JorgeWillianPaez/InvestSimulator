@@ -5,7 +5,7 @@ import { InputContainer } from "./styles";
   em outros componentes da aplicação.
 */
 
-const Input = ({ placeholder, name, label, value, register, error, ...rest }) => {
+const Input = ({ placeholder, name, label, value, register, error = "", ...rest }) => {
   return (
     <InputContainer>
       <input {...register(name)} placeholder={placeholder} id={name} value={value} {...rest} />
