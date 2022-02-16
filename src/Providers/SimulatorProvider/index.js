@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
+import toast from "react-hot-toast";
 
 const simulatorContext = createContext();
 
@@ -15,6 +16,7 @@ export const SimulatorProvider = ({ children }) => {
   const [icpa, setIcpa] = useState(0);
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
+  const [grossLiquidButton, setGrossLiquidButton] = useState(null);
 
   /*
     useEffect utilizado para inserir valores iniciais
@@ -34,8 +36,10 @@ export const SimulatorProvider = ({ children }) => {
   */
   const changeIncome = (type) => {
     if (type === "bruto") {
+      setGrossLiquidButton(true);
       setIncome("bruto");
     } else if (type === "liquido") {
+      setGrossLiquidButton(false);
       setIncome("liquido");
     };
   };
@@ -60,11 +64,17 @@ export const SimulatorProvider = ({ children }) => {
     query params.
   */
   const simulate = (incomeType, indexingType) => {
+    if (indexingType === "fixado") {
+      return toast.error("Desculpe, a simulação não foi encontrada ");
+    }
     api.get(`/simulacoes?tipoIndexacao=${indexingType}&tipoRendimento=${incomeType}`)
       .then((res) => {
+        toast.success("Simulação concluída!")
         setResults(res.data[0]);
         setShowResults(true);
-      })
+      }).catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -78,7 +88,8 @@ export const SimulatorProvider = ({ children }) => {
       simulate,
       results,
       showResults,
-      setShowResults
+      setShowResults,
+      grossLiquidButton
     }}>
       {children}
     </simulatorContext.Provider>

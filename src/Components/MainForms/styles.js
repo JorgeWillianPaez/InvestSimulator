@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
 
@@ -63,10 +63,12 @@ export const IncomeFormButtons = styled.div`
   }
 
   .btn__grossSalary {
+    background-color: ${({ income }) => income === "bruto" ? "var(--salmon)" : "transparent"};
     border-radius: 8px 0 0 8px;
   }
 
   .btn__liquidSalary {
+    background-color: ${({ income }) => income === "liquido" ? "var(--salmon)" : "transparent"};
     border-radius: 0 8px 8px 0;
   }
 
@@ -98,10 +100,16 @@ export const IndexingFormButtons = styled.div`
   }
 
   .btn__pre {
+    background-color: ${({ indexing }) => indexing === "pre" ? "var(--salmon)" : "transparent"};
     border-radius: 8px 0 0 8px;
   }
 
+  .btn__pos {
+    background-color: ${({ indexing }) => indexing === "pos" ? "var(--salmon)" : "transparent"};
+  }
+
   .btn__fixed {
+    background-color: ${({ indexing }) => indexing === "fixado" ? "var(--salmon)" : "transparent"};
     border-radius: 0 8px 8px 0;
   }
 
@@ -126,11 +134,13 @@ export const ClearSubmitBtn = styled.div`
     font-size: 16px;
   }
 
-  ${({ disabled }) => disabled && css`
-    button ~ .btn__submit {
+  button ~ .btn__submit {
+    background-color: var(--salmon);
+    border: none;
+    transition: 0.2s;
+    :disabled {
       background-color: var(--gray);
-      border: none;
     }
-  `}
+  }
 
 `;

@@ -4,8 +4,3 @@ export const formatCurrency = (value) =>
     currency: "BRL"
   }).format(value);
 ;
-
-export const formatPercent = (value) =>
-  Intl.NumberFormat("pt-BR", {
-    style: "percent",
-  }).format(value);
